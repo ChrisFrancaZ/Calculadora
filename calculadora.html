@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Calculadora</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+	<style >
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		.fundo {
+			background-image: linear-gradient(45deg, black, blue);
+			height: 100vh;
+			color: white;
+			font-family: arial, sans-serif;
+
+		}
+
+		.calculadora {
+			background-color:rgba(0, 0, 0, 0.6);
+            padding: 15px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			border-radius: 5%;
+			text-align: center;
+			
+		}
+
+		.botao {
+			width: 50px;
+			height: 50px;
+			font-size: 25px;
+			cursor: pointer;
+			background-color: rgb(31, 31, 31, 1.0);
+			border: none;
+			margin: 5px;
+			color: #fff;
+			border-radius: 2%;
+		}
+
+		.botao:hover {
+			background:black;
+		}
+
+		#resultado {
+			width: 230px;
+			height: 40px;
+			margin: 5px;
+			font-size: 25px;
+			background-color: white;
+			color: black;
+			text-align: right;
+			padding-bottom: 10px;
+
+	</style>
+</head>
+<body>
+	<div class="fundo">
+		<h1>Christian França</h1>
+
+		<div class="calculadora">
+		<h1>Calculadora</h1>
+		<p id="resultado"></p>
+		<table >
+			<tr>
+				<td><button class="botao" onclick="clean('c')">C</button></td>
+				<td><button class="botao" onclick="back()"><</button></td>
+				<td><button class="botao" onclick="inserir('/')">/</button></td>
+				<td><button class="botao" onclick="inserir('*')">X</button></td>
+			</tr>
+			<tr>
+				<td><button class="botao" onclick="inserir('7')">7</button></td>
+				<td><button class="botao" onclick="inserir('8')">8</button></td>
+				<td><button class="botao" onclick="inserir('9')">9</button></td>
+				<td><button class="botao" onclick="inserir('-')" >-</button></td>
+			</tr>
+			<tr>
+				<td><button class="botao" onclick="inserir('4')">4</button></td>
+				<td><button class="botao" onclick="inserir('5')">5</button></td>
+				<td><button class="botao" onclick="inserir('6')">6</button></td>
+				<td><button class="botao" onclick="inserir('+')">+</button></td>
+			</tr>
+			<tr>
+				<td><button class="botao" onclick="inserir('3')">3</button></td>
+				<td><button class="botao" onclick="inserir('2')">2</button></td>
+				<td><button class="botao" onclick="inserir('1')">1</button></td>
+				<td rowspan="2"><button class="botao"  style="height: 110px;" onclick="calculo('=')">=</button></td>
+			</tr>
+			<tr >
+				<td colspan="2"><button class="botao" style="width: 110px;" onclick="inserir('0')">0</button></td>
+				<td><button class="botao" onclick="inserir('.')">.</button></td>
+				
+				
+			</tr>
+		</table>
+	</div>
+
+	<script>
+		//inserindo os números e fazendo eles não se sobreporem
+
+		function inserir (num) {
+
+		  let numeracao = document.getElementById('resultado').innerHTML
+		   document.getElementById('resultado').innerHTML = numeracao + num;
+		}
+         
+         // criando função de apagar
+		function clean () {
+			document.getElementById('resultado').innerHTML = ""
+		}
+       
+        // criando função de apagar um número por vez
+		function back () {
+
+			let valor = document.getElementById('resultado').innerHTML 
+			document.getElementById('resultado').innerHTML = valor.substring(0, valor.length -1)
+		}
+        
+        // criando função de calcular
+		function calculo () {
+			let valor = document.getElementById('resultado').innerHTML
+
+			if (valor) {
+				document.getElementById('resultado').innerHTML = eval(valor) 
+			} 
+		}
+
+
+	</script>
+
+	
+	
+
+</body>
+</html>
